@@ -1,0 +1,35 @@
+<h1>Dashboard</h1>
+<section>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between" fxLayoutGap.xs="10">
+    <div fxFlex="33" fxFlex.xs="100">
+      <app-card-details title="Today" [details]="todayCardDetails"></app-card-details>
+    </div>
+    <div fxFlex="33" fxFlex.xs="100">
+      <app-card-details title="Last Week" [details]="lastWeekCardDetails"></app-card-details>
+    </div>
+    <div fxFlex="33" fxFlex.xs="100">
+      <app-card-details title="Last Month" [details]="lastMonthCardDetails"></app-card-details>
+    </div>
+  </div>
+</section>
+<section>
+  <div fxLayout="row" fxLayoutAlign="start">
+    <div fxFlex="50">
+      <h1>Revenue (last {{ periodLabel }})</h1>
+    </div>
+    <div fxLayoutAlign="end" fxFlex="50">
+      <mat-slide-toggle (change)="onPeriodChange($event)"></mat-slide-toggle>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start">
+    <div fxFlex="100">
+      <app-bar-chart [data]="isYearlyData ? chartDataYear : chartDataWeek"></app-bar-chart>
+    </div>
+  </div>
+</section>
+<section>
+  <h1>Best sellers</h1>
+  <div class="table-container">
+    <app-table *ngIf="bestSellers" [dataSource]="bestSellers" [displayedColumns]="displayedColumns"></app-table>
+  </div>
+</section>

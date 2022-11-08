@@ -1,0 +1,17 @@
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="side" [opened]="true">
+    <div class="logo-container">
+      <img class="logo" [src]="appLogo" />
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center">
+      <div *ngFor="let menuItem of menuItems" fxFlex="100" fxLayoutAlign="center">
+        <button class="menu-item" mat-raised-button [routerLink]="menuItem.route" routerLinkActive="active" (click)="onMenuItemClick(menuItem.route)">
+          {{ menuItem.label }}
+        </button>
+      </div>
+    </div>
+  </mat-drawer>
+  <div>
+    <ng-content></ng-content>
+  </div>
+</mat-drawer-container>

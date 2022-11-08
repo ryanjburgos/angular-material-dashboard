@@ -1,0 +1,17 @@
+<div fxLayout="row">
+  <h1 fxFlex="50">Orders</h1>
+  <div fxLayout="row" fxLayoutAlign="end" fxFlex="50">
+    <form [formGroup]="searchForm">
+      <app-input label="Search" placeholderValue="Search" fieldName="searchTerm" formControlName="searchTerm"></app-input>
+    </form>
+  </div>
+</div>
+
+<section>
+  <div class="table-container">
+    <app-table *ngIf="orders && orders.length > 0" [dataSource]="orders" [displayedColumns]="displayedColumns"></app-table>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <h3 *ngIf="orders?.length === 0">No results</h3>
+  </div>
+</section>
